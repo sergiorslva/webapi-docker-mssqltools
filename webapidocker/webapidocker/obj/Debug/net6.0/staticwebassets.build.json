@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "sjg8TGCPV2TK9i7/l3ODxGTDIWgu59p9OBII1em4OZ4=",
+  "Source": "webapidocker",
+  "BasePath": "_content/webapidocker",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

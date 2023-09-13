@@ -1,0 +1,7 @@
+services:
+  webapidocker:
+    build:
+      context: D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker
+      dockerfile: webapidocker/Dockerfile
+    image: webapidocker
+version: '3.4'

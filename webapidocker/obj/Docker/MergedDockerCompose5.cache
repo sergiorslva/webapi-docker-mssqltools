@@ -1,0 +1,56 @@
+services:
+  mssqltools:
+    command: /bin/bash -c "sleep 10 && /opt/mssql-tools/bin/sqlcmd -S sqlserver -U
+      sa -P @Password123 -d master -i /tmp/db-create.sql"
+    depends_on:
+      sqlserver:
+        condition: service_started
+    image: mcr.microsoft.com/mssql-tools
+    volumes:
+    - D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\db-create.sql:/tmp/db-create.sql:rw
+  sqlserver:
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      SA_PASSWORD: '@Password123'
+    image: mcr.microsoft.com/mssql/server:latest
+    ports:
+    - published: 1433
+      target: 1433
+  webapidocker:
+    build:
+      context: D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker
+      dockerfile: webapidocker/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: webapidocker
+      target: base
+    container_name: webapidocker
+    depends_on:
+      mssqltools:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: webapidocker:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/webapidocker.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 8081
+      target: 80
+    tty: true
+    volumes:
+    - D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\webapidocker:/app:rw
+    - C:\Users\silva\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\silva\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\silva\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\silva\.nuget\packages:/root/.nuget/packages:ro
+    - D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker:/src:rw
+version: '3.4'

@@ -1,0 +1,15 @@
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\webapidocker.deps.json
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\webapidocker.runtimeconfig.json
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\appsettings.Development.json
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\appsettings.json
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\webapidocker.exe
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\webapidocker.dll
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\System.Data.SqlClient.dll
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\Swashbuckle.AspNetCore.Swagger.dll
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\Microsoft.OpenApi.dll
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\bin\Debug\webapidocker.pdb
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\obj\Debug\docker-compose.dcproj.CopyComplete

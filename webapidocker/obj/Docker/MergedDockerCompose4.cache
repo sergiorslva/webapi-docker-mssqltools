@@ -1,0 +1,33 @@
+services:
+  mssqltools:
+    command: /bin/bash -c "sleep 10 && /opt/mssql-tools/bin/sqlcmd -S sqlserver -U
+      sa -P @Password123 -d master -i /tmp/db-create.sql"
+    depends_on:
+      sqlserver:
+        condition: service_started
+    image: mcr.microsoft.com/mssql-tools
+    volumes:
+    - D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker\db-create.sql:/tmp/db-create.sql:rw
+  sqlserver:
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      SA_PASSWORD: '@Password123'
+    image: mcr.microsoft.com/mssql/server:latest
+    ports:
+    - published: 1433
+      target: 1433
+  webapidocker:
+    build:
+      context: D:\GIT-SERGIO\webapi-docker-mssqltools\webapidocker
+      dockerfile: webapidocker/Dockerfile
+    depends_on:
+      mssqltools:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: webapidocker
+    ports:
+    - published: 8081
+      target: 80
+version: '3.4'
